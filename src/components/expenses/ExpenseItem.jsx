@@ -12,9 +12,8 @@ const ExpenseItem = ({expense}) => {
   */
   const {title, date, price} = expense;
 
-  const x = useState(title);
-  console.log('x:', x[0]);
-
+  const [itemTitle, setItemTitle] = useState(title);
+  console.log(`변경 후: ${itemTitle}`);
 
 
   // 원화 표기법으로 변환
@@ -22,10 +21,9 @@ const ExpenseItem = ({expense}) => {
 
   // 이벤트 핸들러
   const clickHandler = e => {
-    console.log(`변경 전: ${x[0]}`);
+    console.log(`변경 전: ${itemTitle}`);
     // title = "짜장면";
-    x[1]("짜장면");
-    console.log(`변경 후: ${x[0]}`);
+    setItemTitle("짜장면");
   };
 
   return (
@@ -34,7 +32,7 @@ const ExpenseItem = ({expense}) => {
       <ExpenseDate expenseDate={date} />
 
       <div className="expense-item__description">
-        <h2>{x[0]}</h2>
+        <h2>{itemTitle}</h2>
         <div className="expense-item__price">{formatPrice}원</div>
       </div>
 
