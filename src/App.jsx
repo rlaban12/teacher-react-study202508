@@ -17,7 +17,12 @@ const App = () => {
     {
       title: '리팩토링',
       price: 33000,
-      date: new Date(2025, 4, 2)
+      date: new Date(2023, 4, 2)
+    },
+    {
+      title: '에어컨',
+      price: 1000000,
+      date: new Date(2022, 3, 2)
     },
   ];
 
