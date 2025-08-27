@@ -26,13 +26,33 @@ const App = () => {
     setGoals(prev => [...prev, newGoal]);
   };
 
+  const onDeleteGoal = (targetId) => {
+
+    setGoals(goals.filter(g => g.id !== targetId));
+
+    // targetId에 해당하는 객체를 배열안에서 탐색한 후 제거
+    // const copyGoals = [...goals];
+    // let index = -1;
+    // for (let i = 0; i < copyGoals.length; i++) {
+    //   if (copyGoals[i].id === targetId) {
+    //     index = i;
+    //     break;
+    //   }
+    // }
+    //
+    // if (index !== -1) {
+    //   copyGoals.splice(index, 1);
+    //   setGoals(copyGoals);
+    // }
+  };
+
   return (
     <div>
       <section id='goal-form'>
         <CourseInput onAdd={onAddGoal} />
       </section>
       <section id='goals'>
-        <CourseList items={goals} />
+        <CourseList items={goals} onDelete={onDeleteGoal} />
       </section>
     </div>
   );
