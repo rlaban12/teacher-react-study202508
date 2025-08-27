@@ -15,16 +15,21 @@ const App = () => {
       id: 'g2',
       text: '테스트 데이터2',
     },
-    {
-      id: 'g3',
-      text: '랄랄루룰',
-    },
   ]);
+
+  // 데이터 끌어올리기용 함수
+  const onAddGoal = (text) => {
+    const newGoal = {
+      id: Math.random().toString(),
+      text: text
+    };
+    setGoals(prev => [...prev, newGoal]);
+  };
 
   return (
     <div>
       <section id='goal-form'>
-        <CourseInput />
+        <CourseInput onAdd={onAddGoal} />
       </section>
       <section id='goals'>
         <CourseList items={goals} />
