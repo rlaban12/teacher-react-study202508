@@ -15,6 +15,10 @@ const App = () => {
       id: 'g2',
       text: '테스트 데이터2',
     },
+    {
+      id: 'g3',
+      text: '랄랄루룰',
+    },
   ]);
 
   return (
@@ -23,7 +27,7 @@ const App = () => {
         <CourseInput />
       </section>
       <section id='goals'>
-        <CourseList />
+        <CourseList items={goals} />
       </section>
     </div>
   );
