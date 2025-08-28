@@ -3,7 +3,7 @@ import { MdAdd } from 'react-icons/md';
 
 import styles from './scss/TodoInput.module.scss';
 
-const TodoInput = () => {
+const TodoInput = ({onAdd}) => {
 
   const {
     'form-wrapper': wrapper,
@@ -12,15 +12,29 @@ const TodoInput = () => {
     open: openStyle,
   } = styles;
 
+  // form toggling
   const [toggle, setToggle] = useState(false);
+
+  // 할 일 입력값 상태관리
+  const [enteredText, setEnteredText] = useState('');
+
+  const submitHandler = e => {
+    e.preventDefault();
+    // console.log(enteredText);
+    onAdd(enteredText);
+
+    setEnteredText('');
+  };
 
   return (
     <>
       {toggle && <div className={wrapper}>
-        <form className={insertForm}>
+        <form className={insertForm} onSubmit={submitHandler}>
           <input
             type="text"
             placeholder="할 일을 입력 후, 엔터를 누르세요!"
+            value={enteredText}
+            onInput={e => setEnteredText(e.target.value)}
           />
         </form>
       </div>}
