@@ -3,7 +3,7 @@ import { MdDelete, MdDone } from 'react-icons/md';
 
 import styles from './scss/TodoItem.module.scss';
 
-const TodoItem = ({ item }) => {
+const TodoItem = ({ item, onDelete }) => {
 
   const { text, remove, finish, active, 'todo-list-item': itemStyle, 'check-circle': checkCircle } = styles;
 
@@ -15,7 +15,7 @@ const TodoItem = ({ item }) => {
         {done && <MdDone/>}
       </div>
       <span className={`${text} ${done ? finish : ''}`}>{title}</span>
-      <div className={remove}>
+      <div className={remove} onClick={() => onDelete(id)}>
         <MdDelete />
       </div>
     </li>

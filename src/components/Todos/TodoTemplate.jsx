@@ -14,10 +14,14 @@ const TodoTemplate = () => {
     setTodos(prev => [...prev, newTodo]);
   };
 
+  const removeTodo = id => {
+    setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
+  };
+
   return (
     <div className={styles.TodoTemplate}>
       <TodoHeader />
-      <TodoMain items={todos} />
+      <TodoMain items={todos} onDelete={removeTodo} />
       <TodoInput onAdd={addTodo} />
     </div>
   );
