@@ -18,10 +18,26 @@ const TodoTemplate = () => {
     setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
   };
 
+  const checkTodo = id => {
+    // id로 done의 값을 변경할 객체를 탐색한 후 논리값 반전
+    setTodos(prevTodos => prevTodos.map(todo =>
+      todo.id === id
+        ? { ...todo, done: !todo.done }
+        : todo
+    ));
+
+    // const copyTodos = [...todos];
+    // const targetTodo = copyTodos.find(todo => todo.id === id);
+    //
+    // targetTodo.done = !targetTodo.done;
+    //
+    // setTodos(copyTodos);
+  };
+
   return (
     <div className={styles.TodoTemplate}>
       <TodoHeader />
-      <TodoMain items={todos} onDelete={removeTodo} />
+      <TodoMain items={todos} onDelete={removeTodo} onCheck={checkTodo} />
       <TodoInput onAdd={addTodo} />
     </div>
   );
